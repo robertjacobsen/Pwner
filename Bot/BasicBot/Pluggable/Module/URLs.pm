@@ -79,7 +79,7 @@ sub parse_youtube {
 
 sub parse_urls {
     my ($self, $args) = @_;
-    my (@urls) = $args->{body} =~ m{^((https?://|www\.)\S+)}gmxis;
+    my (@urls) = $args->{body} =~ m{((https?://|www\.)\S+)}gmxis;
     my $num_urls = 1;
     for my $url (@urls) {
         $url = 'http://' . $url if $url !~ /^http/;
