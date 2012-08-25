@@ -11,7 +11,7 @@ sub connected {
 sub said {
     my ($self, $args) = @_;
 
-    printf STDERR "<%s> %s\n", $args->{who}, $args->{body};
+    #printf STDERR "<%s> %s\n", $args->{who}, $args->{body};
 }
 
 sub err {
