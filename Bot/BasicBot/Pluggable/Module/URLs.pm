@@ -14,7 +14,7 @@ sub admin {
 sub told {
     my ($self, $args) = @_;
 
-    printf STDERR "<%s> %s\n", $args->{who}, $args->{body};
+    #printf STDERR "<%s> %s\n", $args->{who}, $args->{body};
     # Let's ignore what we say, shall we?
     if ($args->{who} ne $self->bot()->nick) {
         if ($args->{body} =~ m{spotify:}) {
@@ -66,7 +66,7 @@ sub parse_youtube {
         my $title = $self->get_title($url);
 
         my ($view_count) = $mech->content() =~ m{<span\s+class="watch-view-count">\s+<strong>(.*?)</strong>}xmis;
-        my ($likes, $dislikes) = $mech->content() =~ m{<span\sclass="watch-likes-dislikes">\s+<span\s+class="likes">(.*?)</span>\s+likes,\s+<span\s+class="dislikes">(.*?)</span>\s+dislikes}xmis;
+        my ($likes, $dislikes) = $mech->content() =~ m{<span\sclass="video-extras-likes-dislikes">\s+<span\s+class="likes">(.*?)</span>\s+likes,\s+<span\s+class="dislikes">(.*?)</span>\s+dislikes}xmis;
         $title =~ s/\s-\sYouTube$//;
         if ($title) {
             $self->bot()->say(
